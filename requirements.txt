@@ -1,7 +1,5 @@
-pandas
-streamlit
+pandas==1.5.3
+streamlit==1.56.0
 plotly
 altair==4.2.2
-streamlit>=1.57.0
-
 
