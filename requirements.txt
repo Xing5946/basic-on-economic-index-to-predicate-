@@ -3,3 +3,5 @@ streamlit>=1.41.1
 plotly
 altair==4.2.2
 pandas>=2.0.3
+requests>=2.31.0
+streamlit-autorefresh>=1.0.0
