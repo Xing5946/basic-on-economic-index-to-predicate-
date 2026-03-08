@@ -347,7 +347,7 @@ def get_base64(image_path):
     with open(image_path, "rb") as f:
         return base64.b64encode(f.read()).decode()
 
-img_base64 = get_base64("frontend\overlay_bg.png")
+img_base64 = get_base64("test/刘_初步集合/frontend/overlay_bg.png")
 
 def render_overview():
     """渲染概览驾驶舱"""
