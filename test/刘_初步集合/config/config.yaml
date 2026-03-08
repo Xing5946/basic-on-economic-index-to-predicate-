@@ -1,0 +1,73 @@
+# 宏观经济预测系统配置文件,简单来讲给程序运行时可被导入并且被程序读取并自动应用配置
+
+# 数据配置
+data:
+  # 数据频率设置
+  frequencies:
+    gdp: 'Q'  # 季度
+    industrial: 'M'  # 月度
+    retail: 'M'
+    investment: 'M'
+    electricity: 'M'
+    pmi: 'M'
+    cpi: 'M'
+    ppi: 'M'
+    stock_index: 'D'  # 日度
+    interest_rate: 'D'
+  
+  # 数据路径
+  paths:
+    raw: "./data/raw"
+    processed: "./data/processed"
+    external: "./data/external"
+  
+  # 数据日期范围
+  date_range:
+    start: "2015-01-01"
+    end: "2024-12-31"
+  
+  # 省份设置（demo使用虚拟省份）
+  province: "DemoProvince"
+
+# 模型配置
+models:
+  # MIDAS模型配置
+  midas:
+    poly_type: "exp_almon"  # 指数Almon多项式
+    num_lags: 12  # 滞后阶数
+    
+  # DFM模型配置
+  dfm:
+    n_factors: 3  # 共同因子数量
+    factor_order: 1  # 因子自回归阶数
+    error_order: 1  # 误差自回归阶数
+    
+  # TSLM大模型配置
+  tslm:
+    model_name: "timesfm"  # 可选: timesfm, moirai, chronos
+    context_len: 512
+    prediction_len: 12
+    patch_size: 32
+    
+  # 混合模型配置
+  hybrid:
+    linear_weight: 0.6
+    nonlinear_weight: 0.4
+
+# 后端API配置
+backend:
+  host: "0.0.0.0"
+  port: 8000
+  reload: true
+  
+# 定时任务配置
+scheduler:
+  data_update: "0 8 * * *"  # 每天8点更新数据
+  model_retrain: "0 2 * * 0"  # 每周日凌晨2点重训练
+  report_generate: "0 9 * * 1"  # 每周一上午9点生成报告
+
+# 前端配置
+frontend:
+  title: "宏观经济核心指标预测系统"
+  page_icon: "📊"
+  layout: "wide"
