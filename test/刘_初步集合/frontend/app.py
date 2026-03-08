@@ -440,7 +440,9 @@ def render_overview():
     col_left, col_right = st.columns([2, 1])
     
     with col_left:
-        st.subheader("📈 GDP历史趋势与预测")
+       
+        st.markdown(gradient_title("📈 GDP历史趋势与预测",color1="#D19C8B",color2="#8d346b", angle=135, font_size="2rem", tag="h2", align="left"), unsafe_allow_html=True)
+        
         
         # 模拟GDP数据
         dates = pd.date_range(start='2015-01-01', periods=40, freq='QE')
@@ -526,7 +528,8 @@ def render_overview():
     st.divider()
     
     # 高频指标监控
-    st.subheader("📡 高频指标实时监控")
+    st.markdown(gradient_title("📡 高频指标实时监控",color1="#D19C8B",color2="#8d346b", angle=135, font_size="2rem", tag="h2", align="left"), unsafe_allow_html=True)
+               
     
     indicator_cols = st.columns(4)
     
